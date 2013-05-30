@@ -23,3 +23,11 @@ SAPE_DIR = '/tmp/sape_cache/'
 ## Запрос ссылок (обновление кеша)
 
 `./manage.py sape fetch`
+
+## В шаблоне
+
+```
+{% load sape_extras %}
+...
+{% sape_links request %}
+```
