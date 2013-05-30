@@ -4,6 +4,7 @@ setup(name='django-sape',
       description='Django + sape.ru.',
       version='0.2.1',
       packages=['sape'],
+      url='http://github.com/fedosov/sape',
       #install_requires=['mechanize']
       classifiers=
       [
