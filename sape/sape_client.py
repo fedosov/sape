@@ -35,13 +35,13 @@ class SapeClient(object):
             self.cache = cache
             self.cache_time = os.path.getmtime(filename)
 
-        except (EOFError, IOError):
-            self.log.error('Cache file "%s" not found', filename)
+        except (EOFError, IOError, OSError):
+            self.log.debug('Cache file "%s" not found', filename)
 
     def init_log(self):
         self.log = logging.getLogger('sape')
-        self.log.setLevel(settings.LOG_LEVEL)
-        handler = logging.FileHandler(settings.SAPE_LOG)
+        self.log.setLevel(getattr(settings, 'LOG_LEVEL', logging.ERROR))
+        handler = logging.FileHandler(getattr(settings, 'SAPE_LOG', '/dev/null'))
         LOG_FORMAT = u'%(levelname)s %(asctime)s: %(message)s'
         LOG_TIME_FORMAT = u'%Y-%m-%d %H:%M:%S'
         handler.setFormatter(logging.Formatter(LOG_FORMAT, LOG_TIME_FORMAT))
