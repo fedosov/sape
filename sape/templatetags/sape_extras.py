@@ -1,5 +1,3 @@
-import re
-
 from django import template
 from django.conf import settings
 
@@ -14,11 +12,11 @@ SAPE_DIR = getattr(settings, 'SAPE_DIR', '.')
 
 @register.simple_tag
 def sape_links(request):
-    query_string = request.META.get('QUERY_STRING', '')
+	query_string = request.META.get('QUERY_STRING', '')
 
-    uri = u''.join([request.path,
-                   len(query_string) and '?' or '',
-                   query_string])
+	uri = u''.join([request.META["PATH_INFO"],
+	               len(query_string) and '?' or '',
+	               query_string])
 
-    links = sape_manager.get_links(uri)
-    return u" ".join(links)
+	links = sape_manager.get_links(uri)
+	return u" ".join(links)
