@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(name='django-sape',
       description='Django + sape.ru.',
-      version='0.2.2',
+      version='0.2.3',
       packages=['sape'],
       author='Dimmma',
       author_email='https://github.com/Dimmma',
